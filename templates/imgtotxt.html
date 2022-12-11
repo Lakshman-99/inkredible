@@ -1,0 +1,58 @@
+{% extends 'template.html' %}
+
+{% block head %}
+<link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='css/imgtotxt.css') }}" />
+{% endblock %}
+
+{% block body %}
+<br>
+<br>
+<br>
+<center>
+    <header>
+        {% if msg %}
+        <div class="alert alert-primary" id="alert" role="alert">
+        {{ msg }}
+        </div>
+        {% endif %}
+    </header>
+
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+        <main role="main" class="inner cover">
+
+
+
+        <h1 class="cover-heading">Typical Text Converter</h1>
+        <p class="lead">Yet another typical text converter. Upload your files and I'll extract the text from 'em. Pure magic.</p>
+        <p class="lead">
+
+            <form method="POST" enctype="multipart/form-data" action="upload">
+            <input type="file" name="file[]" id="file" multiple=""/>
+            <label for="file">choose a file</label>
+
+            <div class="container col-md-4">
+            <ul class="list-group" id="selectedfiles"></ul>
+            </div>
+
+            <input type="submit" class="btn btn-lg btn-secondary" value="UPLOAD" style="margin-top: 24px">
+
+        </form>
+
+        </p>
+
+
+        </main>
+
+        <footer class="mastfoot mt-auto">
+          <div class="inner">
+          </div>
+        </footer>
+      </div>
+</center>
+
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/showList.js') }}"></script>
+{% endblock %}

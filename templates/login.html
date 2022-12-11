@@ -1,34 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "template.html" %}
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>INKredible</title>
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/icon.png')}}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"/>
-    <link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
-</head>
+{% block head %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}">
+{% endblock %}
 
-<body>
-    <!-- Dark Mode Switch -->
-    <div class="theme-switch-wrapper">
-        <span id="toggle-icon">
-            <span id="toggle-text">Light Mode</span>
-        <i class="fas fa-sun"></i>
-        </span>
-        <label class="theme-switch">
-            <input type="checkbox">
-            <div class="slider round"></div>
-        </label>
-    </div>
-    <!-- Navigation -->
-    <nav id="nav">
-        <a href="/home">HOME</a>
-        <a href="/login">LOGIN</a>
-    </nav>
+{% block body %}
     <!-- home section -->
     <section>
     <div class="box">
@@ -55,8 +31,5 @@
       </div>
     </div>
     </section>
-    <span id="text-box"></span>
-    <!-- Script -->
-    <script src="{{url_for('static', filename='js/script.js')}}"></script>
-</body>
-</html>
+
+{% endblock %}

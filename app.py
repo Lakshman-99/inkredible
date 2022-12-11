@@ -28,7 +28,7 @@ def login():
 #==> Image & PDF to text OCR
 @app.route('/imagetotext')
 def imagetotext():
-	return render_template('upload.html')
+	return render_template('imgtotxt.html')
 
 @app.route('/upload', methods=['POST'])
 def upload():
