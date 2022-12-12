@@ -80,6 +80,7 @@ a:hover,
 a:focus {
     color: var(--on-background);
     border-bottom: 3px solid;
+    text-decoration: none;
 }
 
 

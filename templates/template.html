@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
 </head>
 
-<body class="text-center">
+<body>
     <!-- Dark Mode Switch -->
     <div class="theme-switch-wrapper">
         <span id="toggle-icon">
@@ -26,12 +26,9 @@
     </div>
     <!-- Navigation -->
     <nav id="nav">
-        <a href="/home">HOME</a>
         {% block nav %}
         {% endblock %}
-        <a href="/login">LOGIN</a>
     </nav>
-    <span id="text-box"></span>
 
     {% block body %}
     {% endblock %}

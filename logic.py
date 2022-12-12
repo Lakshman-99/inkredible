@@ -2,6 +2,7 @@ import pytesseract
 import cv2
 
 pytesseract.pytesseract.tesseract_cmd = 'C:/Program Files/Tesseract-OCR/tesseract.exe'
+#pytesseract.pytesseract.tesseract_cmd = r'/Users/karthikraja/Desktop/inkredible/venv/lib/python3.11/site-packages/tesseract'
 
 def find_text(filename):
     img = cv2.imread(filename, 0)

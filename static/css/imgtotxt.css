@@ -5,10 +5,10 @@
 }
 
 [type="file"] + label {
-background: #f15d22;
+background: var(--primary-color);
 border: none;
 border-radius: 5px;
-color: #fff;
+color: var(--on-primary);
 cursor: pointer;
 display: inline-block;
     font-family: 'Rubik', sans-serif;
@@ -37,4 +37,9 @@ ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
+}
+
+.list-group-item{
+    background-color: var(--background)!important;
+    color: var(--on-background);
 }
