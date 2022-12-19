@@ -1,0 +1,67 @@
+{% extends 'template.html' %}
+
+{% block head %}
+<link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='css/imgtotxt.css') }}" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style media="screen">
+  .latex {
+    height:30px;
+    width:115px;
+  }
+  .lead{
+    font-weight: bolder;
+  }
+</style>
+{% endblock %}
+
+{% block nav %}
+<a href="/home">HOME</a>
+<a href="/login">LOGIN</a>
+{% endblock %}
+
+{% block body %}
+<span id="text-box"></span>
+
+<center style="padding-top: 175px;">
+    <header>
+        {% if msg %}
+        <div class="alert alert-primary" id="alert" role="alert">
+        {{ msg }}
+        </div>
+        {% endif %}
+    </header>
+
+    <div class="cover-container">
+
+        <main role="main" class="inner cover">
+
+
+
+        <h1 class="cover-heading">Handwritten Mathematical Expressions</h1>
+            <br>
+            <br>
+        <p class="lead">Here is the converted version of the mathematical expression you submitted: <div lang="latex">{{ user_latex }}</div></p>
+
+        <br>
+        <p class="lead">The calculated result is: {{ user_number }}</p>
+
+            <button id="mybutton" type="submit" class="outline" style="margin-top: 24px" onclick="location.href = '/reset';">START OVER</button>
+
+        </main>
+
+        <footer class="mastfoot mt-auto">
+          <div class="inner">
+          </div>
+        </footer>
+      </div>
+</center>
+
+{% endblock %}
+{% block scripts %}
+<script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
+<script type="text/javascript">
+    document.getElementById("myButton").onclick = function () {
+        location.href = "http://127.0.0.1:5000/reset";
+    };
+</script>
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends 'template.html' %}
+
+{% block head %}
+<link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='css/imgtotxt.css') }}" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+{% endblock %}
+
+{% block nav %}
+<a href="/home">HOME</a>
+<a href="/login">LOGIN</a>
+{% endblock %}
+
+{% block body %}
+<span id="text-box"></span>
+
+<center style="padding-top: 175px;">
+    <header>
+        {% if msg %}
+        <div class="alert alert-primary" id="alert" role="alert">
+        {{ msg }}
+        </div>
+        {% endif %}
+    </header>
+
+    <div class="cover-container">
+
+        <main role="main" class="inner cover">
+
+
+
+        <h1 class="cover-heading">Handwritten Mathematical Expressions</h1>
+            <br>
+        <p class="lead">Please upload the image you would like to calculate below (.png format)</p>
+            <br>
+        <p class="lead">
+
+            <form method="POST" enctype="multipart/form-data" action="/math_uploader">
+            <input type="file" name="file" id="file" multiple=""/>
+            <label class="primary" for="file">choose a file</label>
+            <div class="container col-md-4">
+            <ul class="list-group" id="selectedfiles"></ul>
+            </div>
+            <button type="submit" class="outline" value="UPLOAD" style="margin-top: 24px">UPLOAD</button>
+
+        </form>
+        </main>
+        <br>
+        <div id="element" class="ring" style="display:none;">Loading
+          <span id="element2" class="rin" style="display:none;"></span>
+        </div>
+
+        <footer class="mastfoot mt-auto">
+          <div class="inner">
+          </div>
+        </footer>
+      </div>
+</center>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+  $('#click').on('click', function () {
+      $('#element').css('display', 'block');
+      $('#element2').css('display', 'block');
+  });
+</script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/showList.js') }}"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+{% endblock %}

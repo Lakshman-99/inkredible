@@ -1,0 +1,21 @@
+
+
+.wrapper {
+  display: grid;
+  gap: 20px;
+  width: 600px;
+  max-width: calc(100vw - 40px);
+  padding: 30px;
+  border-radius: 10px;
+  background-color: #0003;
+}
+
+#text {
+  display: block;
+  height: 100px;
+  padding: 20px;
+  border: none;
+  font-size: inherit;
+  font-family: inherit;
+  resize: vertical;
+}

@@ -1,0 +1,79 @@
+{% extends 'template.html' %}
+
+{% block head %}
+<link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='css/imgtotxt.css') }}" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style media="screen">
+  .card-body{
+    color:black;
+  }
+  .card{
+    width:80%;
+  }
+  .card-title{
+    text-decoration: underline;
+  }
+</style>
+{% endblock %}
+
+{% block nav %}
+<a href="/home">HOME</a>
+<a href="/login">LOGIN</a>
+{% endblock %}
+
+{% block body %}
+<span id="text-box"></span>
+
+<center style="padding-top: 175px;">
+    <header>
+        {% if msg %}
+        <div class="alert alert-primary" id="alert" role="alert">
+        {{ msg }}
+        </div>
+        {% endif %}
+    </header>
+
+    <div class="cover-container">
+
+        <main role="main" class="inner cover">
+
+
+
+        <h1 class="cover-heading">Translation service</h1>
+            <br>
+        <p class="lead">Enter the text you wish to translate, choose the language, and click Translate!</p>
+            <br>
+            <br>
+
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Original text</h5>
+                    <p class="card-text">{{ original_text }}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Translated text</h5>
+                    <p class="card-text">{{ translated_text }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="outline" style="margin-top: 24px" onclick="location.href = '/translation';">START OVER</button>
+
+
+        <footer class="mastfoot mt-auto">
+          <div class="inner">
+          </div>
+        </footer>
+      </div>
+</center>
+
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

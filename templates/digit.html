@@ -1,0 +1,71 @@
+{% extends 'template.html' %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/digit.css') }}">
+<link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='css/imgtotxt.css') }}" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+{% endblock %}
+
+{% block nav %}
+<a href="/home">HOME</a>
+<a href="/login">LOGIN</a>
+{% endblock %}
+
+{% block body %}
+<span id="text-box"></span>
+
+<center style="padding-top: 175px;">
+    <header>
+        {% if msg %}
+        <div class="alert alert-primary" id="alert" role="alert">
+        {{ msg }}
+        </div>
+        {% endif %}
+    </header>
+
+    <div class="cover-container">
+
+        <main role="main" class="inner cover">
+
+
+
+        <h1 class="cover-heading">Handwritten Digit Recognition</h1>
+            <br>
+        <p class="lead">Please use the cursor to write the digit in the box to start the prediction.</p>
+            <br>
+            <br>
+            <br>
+
+            <div class="common">
+                <div class="boxitem">
+                    <canvas id="inputimg" width="196" height="196"></canvas>
+                    <button id="clearbtn" type="submit" class="outline" style="margin-top: 24px" >CLEAR</button>
+
+                </div>
+                <div class="boxitem">
+                    <div id="pred">0</div>
+                    <div id="prob">Probability : </div>
+                </div>
+                <div class="boxitem">
+                    <svg id="probGraph" width="250" height="196"></svg>
+                </div>
+            </div>
+
+        </main>
+
+
+        <footer class="mastfoot mt-auto">
+          <div class="inner">
+          </div>
+        </footer>
+      </div>
+</center>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/digit.js') }}"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//d3js.org/d3.v5.min.js"></script>
+{% endblock %}

@@ -1,8 +1,15 @@
 {% extends "template.html" %}
 
+{% block head %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}">
+<script src="https://kit.fontawesome.com/9f94d8b3b2.js" crossorigin="anonymous"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+{% endblock %}
+
 {% block nav %}
-<a href="/home">HOME</a>
-<a href="#about">ABOUT</a>
+<a href="#home">HOME</a>
+<a href="#tools">ABOUT</a>
 <a href="/pdftotext">PTT</a>
 <a href="/imagetotext">ITT</a>
 <a href="/login">LOGIN</a>
@@ -15,6 +22,122 @@
             <h1>Custom Title Here</h1>
             <h2>Welcome to the Website</h2>
         </div>
+    </section>
+    <!-- tools section -->
+    <section id="tools">
+      <div class="content-wrapper">
+        <div class="news-card" style="  transform: scale(0.9);">
+          <a href="#" class="news-card__card-link"></a>
+          <i class="gab fab fas fa-solid fa-font" style="font-size: 100px !important;"></i>
+          <div class="news-card__text-wrapper">
+            <h3 class="news-card__title">Amazing First Title</h3>
+            <div class="news-card__post-date">Jan 29, 2018</div>
+            <div class="news-card__details-wrapper">
+              <p class="news-card__excerpt">Loat? Ullam sed officia iure architecto deserunt distinctio, pariatur&hellip;</p>
+            </div>
+          </div>
+        </div>
+        <div class="news-card" style="  transform: scale(0.9);">
+          <a href="#" class="news-card__card-link"></a>
+          <i class="gab fab fas fa-solid fa-file-word" style="font-size: 100px !important;"></i>
+          <div class="news-card__text-wrapper">
+            <h3 class="news-card__title">Amazing First Title</h3>
+            <div class="news-card__post-date">Jan 29, 2018</div>
+            <div class="news-card__details-wrapper">
+              <p class="news-card__excerpt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Est pariatur nemo tempore repellat? Ullam sed officia iure architecto deserunt distinctio, pariatur&hellip;</p>
+            </div>
+          </div>
+        </div>
+        <div class="news-card" style="  transform: scale(0.9);">
+          <a href="#" class="news-card__card-link"></a>
+          <i class="fab fa-facebook gab"></i>
+          <div class="news-card__text-wrapper">
+            <h3 class="news-card__title">Amazing First Title</h3>
+            <div class="news-card__post-date">Jan 29, 2018</div>
+            <div class="news-card__details-wrapper">
+              <p class="news-card__excerpt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Est pariatur nemo tempore repellat? Ullam sed officia iure architecto deserunt distinctio, pariatur&hellip;</p>
+            </div>
+          </div>
+        </div>
+        <div class="news-card" style="  transform: scale(0.9);">
+          <a href="#" class="news-card__card-link"></a>
+          <i class="fas fab gab fa-solid fa-gopuram" style="font-size: 100px !important;"></i>
+          <div class="news-card__text-wrapper">
+            <h3 class="news-card__title">Amazing First Title</h3>
+            <div class="news-card__post-date">Jan 29, 2018</div>
+            <div class="news-card__details-wrapper">
+              <p class="news-card__excerpt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Est pariatur nemo tempore repellat? Ullam sed officia iure architecto deserunt distinctio, pariatur&hellip;</p>
+            </div>
+          </div>
+        </div>
+        <div class="news-card" style="  transform: scale(0.9);">
+          <a href="/mathematicalexpression" class="news-card__card-link"></a>
+          <i class="fas fab gab fa-solid fa-superscript" style="font-size: 100px !important;"></i>
+          <div class="news-card__text-wrapper">
+            <h3 class="news-card__title">Handwritten Mathematical Expression</h3>
+            <div class="news-card__post-date">CRNN</div>
+            <div class="news-card__details-wrapper">
+              <p class="news-card__excerpt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Est pariatur nemo tempore repellat? Ullam sed officia iure architecto deserunt distinctio, pariatur&hellip;</p>
+            </div>
+          </div>
+        </div>
+        <div class="news-card" style="  transform: scale(0.9);">
+          <a href="/digitrecognition" class="news-card__card-link"></a>
+          <i class="fas fab gab fa-solid fa-hashtag" style="font-size: 100px !important;"></i>
+          <div class="news-card__text-wrapper">
+            <h3 class="news-card__title">Handwritten Digit Recognition</h3>
+            <div class="news-card__post-date">CNN</div>
+            <div class="news-card__details-wrapper">
+              <p class="news-card__excerpt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Est pariatur nemo tempore repellat? Ullam sed officia iure architecto deserunt distinctio, pariatur&hellip;</p>
+            </div>
+          </div>
+        </div>
+        <div class="news-card" style="  transform: scale(0.9);">
+          <a href="/imagetotext" class="news-card__card-link"></a>
+          <i class="gab fab fas fa-regular fa-image" style="font-size: 100px !important;"></i>
+          <div class="news-card__text-wrapper">
+            <h3 class="news-card__title">Image To Text</h3>
+            <div class="news-card__post-date">Tesseract</div>
+            <div class="news-card__details-wrapper">
+              <p class="news-card__excerpt">Loempore repellat? Ullam sed officia iure architecto deserunt distinctio, pariatur&hellip;</p>
+            </div>
+          </div>
+        </div>
+        <div class="news-card" style="  transform: scale(0.9);">
+          <a href="/pdftotext" class="news-card__card-link"></a>
+          <i class="gab fab fas fa-solid fa-file-pdf" style="font-size: 100px !important;"></i>
+          <div class="news-card__text-wrapper">
+            <h3 class="news-card__title">Pdf To Text</h3>
+            <div class="news-card__post-date">Tesseract</div>
+            <div class="news-card__details-wrapper">
+              <p class="news-card__excerpt">Loremlat? Ullam sed officia iure architecto deserunt distinctio, pariatur&hellip;</p>
+            </div>
+          </div>
+        </div>
+        <div class="news-card" style="  transform: scale(0.9);">
+          <a href="/texttospeech" class="news-card__card-link"></a>
+          <i class="gab fab fas fa-regular fa-microphone" style="font-size: 100px !important;"></i>
+          <div class="news-card__text-wrapper">
+            <h3 class="news-card__title">Text To Speech</h3>
+            <div class="news-card__post-date">Speech Synthesis</div>
+            <div class="news-card__details-wrapper">
+              <p class="news-card__excerpt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Est pariatur nemo tempore repellat? Ullam sed officia iure architecto deserunt distinctio, pariatur&hellip;</p>
+            </div>
+          </div>
+        </div>
+        <div class="news-card" style="  transform: scale(0.9);">
+          <a href="/translation" class="news-card__card-link"></a>
+          <i class="gab fab fas fa-solid fa-language" style="font-size: 100px !important;"></i>
+          <div class="news-card__text-wrapper">
+            <h3 class="news-card__title">translation</h3>
+            <div class="news-card__post-date">API</div>
+            <div class="news-card__details-wrapper">
+              <p class="news-card__excerpt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Est pariatur nemo tempore repellat? Ullam sed officia iure architecto deserunt distinctio, pariatur&hellip;</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </section>
     <!-- About Section -->
     <section id="about">
@@ -52,7 +175,7 @@
         </div>
     </section>
     <!-- Contact section -->
-    <section id="contact">
+    <section id="contac">
         <div class="social-icons">
             <i class="fab fa-facebook"></i>
             <i class="fab fa-twitter"></i>

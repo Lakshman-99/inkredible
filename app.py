@@ -1,17 +1,22 @@
 from flask import Flask, render_template, request, session, abort, redirect, url_for, send_file
 from werkzeug.utils import secure_filename
-from logic import find_text
 from docx import Document
 from fpdf import FPDF
 from pathlib import Path
 from pdf2image import convert_from_path as CFP
-import os
+from support.logic import find_text
+import requests, os, uuid, json, sys, torch
+from support import main as ms
+from PIL import Image
+import numpy as np
+from support.digitModel import Model, Predict
 
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'static/uploads/'
 app.config['UPLOAD_FOLDER2'] = 'static/saves/'
 app.config['ALLOWED_EXTENSIONS'] = set(['png', 'jpg', 'jpeg', 'pdf'])
+predict = Predict()
 
 #remove files in uploads & pdf_img
 [f.unlink() for f in Path("static/uploads/").glob("*") if f.is_file()]
@@ -112,5 +117,87 @@ def save_file():
 
 	return ""
 
+#mathematical expression
+@app.route('/mathematicalexpression')
+def mathematicalexpression():
+	return render_template('maths.html')
+
+@app.route('/math_uploader', methods=['POST'])  # uploader
+def math_uploader():
+	f = request.files['file']
+	f.save(os.path.join(app.config['UPLOAD_FOLDER'],secure_filename(f.filename)))
+	ms.my_func()
+	h = open('static/results/calculationResult.txt', 'r')
+	content = h.readlines()
+	mynum = "No result available"
+	for line in content:
+		mynum = line # int(line)
+
+	f = open('static/results/MathJaxResult.txt', 'r')
+	cont = f.readlines()
+	mylatex = "No latex output available"
+	for line in cont:
+		mylatex = line # int(line)
+
+	return render_template("math_result.html", user_number = mynum, user_latex = mylatex)
+
+@app.route('/reset')
+def remove():
+	[f.unlink() for f in Path("static/uploads/").glob("*") if f.is_file()]
+	[f.unlink() for f in Path("static/results/").glob("*") if f.is_file()]
+	return redirect('mathematicalexpression')
+
+#language translator
+@app.route('/translation', methods=['GET'])
+def translation():
+    return render_template('translation.html')
+
+@app.route('/translation_result', methods=['POST'])
+def translation_result():
+	original_text = request.form['text']
+	target_language = request.form['language']
+
+	key = "d6095aa6be8448c4ab075ec8a0840137"
+	endpoint = "https://api.cognitive.microsofttranslator.com/"
+	location = "westus2"
+
+	path = '/translate?api-version=3.0'
+	target_language_parameter = '&to=' + target_language
+	constructed_url = endpoint + path + target_language_parameter
+
+	headers = {
+	    'Ocp-Apim-Subscription-Key': key,
+	    'Ocp-Apim-Subscription-Region': location,
+	    'Content-type': 'application/json',
+	    'X-ClientTraceId': str(uuid.uuid4())
+	}
+
+	body = [{ 'text': original_text }]
+
+	translator_request = requests.post(constructed_url, headers=headers, json=body)
+	translator_response = translator_request.json()
+	translated_text = translator_response[0]['translations'][0]['text']
+
+	return render_template('translation_result.html', translated_text=translated_text, original_text=original_text, target_language=target_language)
+
+#text to speech
+@app.route('/texttospeech', methods=['GET','POST'])
+def texttospeech():
+    return render_template('texttospeech.html')
+
+#digit recognition
+@app.route("/digitrecognition", methods=['GET','POST'])
+def digitrecognition():
+	if(request.method == 'POST'):
+		img = Image.open(request.files["img"]).convert("L")
+		res_json = {"pred": "Err", "probs": []}
+		if predict is not None:
+			res = predict(img)
+			res_json["pred"] = str(np.argmax(res))
+			res_json["probs"] = [p * 100 for p in res]
+		return json.dumps(res_json)
+
+	return render_template("digit.html")
+
 if __name__ == '__main__':
-	app.run(debug=True, use_reloader=True)
+	app.run(host="0.0.0.0", debug=True, use_reloader=True)
